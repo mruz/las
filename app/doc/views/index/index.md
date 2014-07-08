@@ -31,6 +31,9 @@
 5. [Admin panel](doc/admin)
 - [Dashboard](doc/admin#dashboard)
 - [Networks](doc/admin#networks)
+- [Tariffs](doc/admin#tariffs)
+- [Clients](doc/admin#clients)
+- [Devices](doc/admin#devices)
 
 6. [Examples](doc/examples)
 
