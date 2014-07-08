@@ -291,8 +291,8 @@ class Networks extends \Phalcon\Mvc\Model
             $this->gateway = $this->request->getPost('gateway', 'ip2long');
             $this->DNS = $this->request->getPost('DNS', 'string');
             $this->DHCP = $this->request->getPost('DHCP', 'string');
-            $this->download = $this->request->getPost('download', 'int');
-            $this->upload = $this->request->getPost('upload', 'int');
+            $this->download = $this->request->getPost('download', 'int', 0, true);
+            $this->upload = $this->request->getPost('upload', 'int', 0, true);
             $this->description = $this->request->getPost('description', 'string');
             $this->status = $this->request->getPost('status', 'int');
             $this->date = date('Y-m-d H:i:s');
