@@ -31,3 +31,7 @@
 5. [Admin panel](doc/admin)
 
 6. [Examples](doc/examples)
+
+7. [Update](doc/update)
+- [Working with git](doc/update#git)
+- [Manual update](doc/update#manual)
