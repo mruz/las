@@ -1,0 +1,1 @@
+<h6>{{ __('Error :code', [':code' : 404]) }} - {{ __('Page not found.') }}</h6>

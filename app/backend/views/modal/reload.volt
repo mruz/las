@@ -1,0 +1,1 @@
+{{ modalPartial|isset ? partial('modal/' ~ modalPartial) : __('The firewall will be reloaded.') }}

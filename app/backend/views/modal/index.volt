@@ -1,0 +1,1 @@
+{{ modalPartial|isset ? partial('modal/' ~ modalPartial) : __('The changes are irreversible.') }}

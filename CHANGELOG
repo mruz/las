@@ -1,0 +1,12 @@
+1.0.0a1
+ - clients managing
+ - devices inventory (IP, MAC)
+ - tariffs with priorities and bandwidth limits
+ - quality of service
+ - redirections
+ - messages to users
+ - automatic payment schedule
+ - multiple firewalls support (editable by web browser)
+ - automatic generating of firewalls
+ - cutting indebted clients (redirecting traffic to one page)
+ - cron tasks

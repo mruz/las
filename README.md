@@ -1,4 +1,4 @@
 las
 ===
 
-LAN Administration System - generate IPTABLES firewall from PHP
+Las is a LAN administration system for any kind of ISP (Internet Service Provider). It is an application written in PHP (Phalcon framework), whose main goal is to generate IPTABLES firewall from database for Linux based system.
