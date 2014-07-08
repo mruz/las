@@ -286,7 +286,7 @@ class FirewallsController extends IndexController
             if ($this->las['general']['realTime'] && $this->las['general']['rootPassword']) {
                 try {
                     // Try to run command as root
-                    $output = Las::cmd(Las::display($firewall->name).' | sh', true);
+                    $output = Las::cmd('php ' . ROOT_PATH . '/private/index.php firewall display ' . $firewall->id . ' | sh', true);
 
                     $this->tag->setTitle(__('Success'));
                     $this->flashSession->success($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Success') . '!</strong> ' . __("The :name firewall was reloaded.", [':name' => '<i>' . $firewall->name . '</i>']));
@@ -295,7 +295,8 @@ class FirewallsController extends IndexController
                     // Display debug if setting is enabled
                     if ($this->las['general']['debugCmd']) {
                         $this->view->setVars([
-                            'content' => $output
+                            'content' => $output,
+                            'redirect' => false
                         ]);
                     } else {
                         $this->view->setVars([
