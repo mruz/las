@@ -29,6 +29,8 @@
 - [Las configuration](doc/configuration#las)
 
 5. [Admin panel](doc/admin)
+- [Dashboard](doc/admin#dashboard)
+- [Networks](doc/admin#networks)
 
 6. [Examples](doc/examples)
 
