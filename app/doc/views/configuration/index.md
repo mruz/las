@@ -158,6 +158,12 @@ mysql> source las.sql;
 ***
 
 #### Las configuration {#las}
+Ignore local configuration files that are edited, but should never be committed upstream. Git lets you ignore those files by assuming they are unchanged.
+```bash
+# ignore config file to easily merge future changes
+git update-index --assume-unchanged app/common/config/config.ini
+```
+<br />
 Edit `/app/common/config/config.ini` config file:
 ```ini
 [app]
