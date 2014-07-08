@@ -157,6 +157,27 @@ mysql> source las.sql;
 ```
 ***
 
+#### Network configuration {#network}
+Configure lan, wan interfaces:
+```bash
+# check available interfaces
+ip addr show
+
+# assign dynamic IP to interface (enp2s0, you may have eth0); wan
+ifdown enp2s0
+ifup enp2s0=dhcp
+
+# assign IP to a specific interface (enp3s0) with netmask 255.255.255.0 (/24); lan
+ip addr add 192.168.100.1/24 broadcast 192.168.100.255 dev enp3s0
+
+# enable network interface
+ip link set enp3s0 up
+
+# add default gateway
+ip route add default via 192.168.100.1
+```
+***
+
 #### Las configuration {#las}
 Ignore local configuration files that are edited, but should never be committed upstream. Git lets you ignore those files by assuming they are unchanged.
 ```bash

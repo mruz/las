@@ -41,7 +41,7 @@ zypper ar http://download.opensuse.org/repositories/server:mail/openSUSE_13.1/se
 zypper ref
 
 # install web server, php, mysql and mail server from the server repo
-zypper in server_http:nginx server_php:php5 server_database:mariadb_100 server_mail:postfix
+zypper in server_http:nginx server_php:php5 server_database:mariadb server_mail:postfix
 
 # add server:php/openSUSE 13.1 phalcon repo
 zypper ar http://download.opensuse.org/repositories/home:mruz:server:php/openSUSE_13.1/home:mruz:server:php.repo
