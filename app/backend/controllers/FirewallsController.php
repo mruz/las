@@ -286,7 +286,7 @@ class FirewallsController extends IndexController
             if ($this->las['general']['realTime'] && $this->las['general']['rootPassword']) {
                 try {
                     // Try to run command as root
-                    $output = Las::cmd(Las::display($firewall->name), true);
+                    $output = Las::cmd(Las::display($firewall->name).' | sh', true);
 
                     $this->tag->setTitle(__('Success'));
                     $this->flashSession->success($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Success') . '!</strong> ' . __("The :name firewall was reloaded.", [':name' => '<i>' . $firewall->name . '</i>']));
