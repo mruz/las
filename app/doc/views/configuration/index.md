@@ -2,6 +2,7 @@
 - [Nginx configuration](#nginx)
 - [PHP configuration](#php)
 - [MySQL configuration](#mysql)
+- [Network configuration](#network)
 - [Las configuration](#las)
 ***
 
@@ -155,10 +156,22 @@ mysql> flush privileges;
 mysql> use las;
 mysql> source las.sql;
 ```
+
+Enable MySQL service
+```bash
+# enable mysql
+systemctl enable mysql.service
+
+```
 ***
 
 #### Network configuration {#network}
 Configure lan, wan interfaces:
+```
+# configure with YaST/Network Devices/Network Settings  
+yast
+```
+or
 ```bash
 # check available interfaces
 ip addr show
@@ -175,6 +188,18 @@ ip link set enp3s0 up
 
 # add default gateway
 ip route add default via 192.168.100.1
+```
+
+Enable the DHCP server
+```bash
+# install dhcp
+zypper in dhcp-server
+
+# set DHCPD_INTERFACE to lan interface eg enp3s0
+sed -i 's/DHCPD_INTERFACE=""/DHCPD_INTERFACE="enp3s0"/' /etc/sysconfig/dhcpd
+
+# start dhcp server
+systemctl start dhcpd.service
 ```
 ***
 

@@ -26,6 +26,7 @@
 - [Nginx configuration](doc/configuration#nginx)
 - [PHP configuration](doc/configuration#php)
 - [MySQL configuration](doc/configuration#mysql)
+- [Network configuration](doc/configuration#network)
 - [Las configuration](doc/configuration#las)
 
 5. [Admin panel](doc/admin)
