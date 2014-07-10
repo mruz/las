@@ -1,7 +1,7 @@
 echo "
 {# /etc/dhcpd.conf #}
 authoritative;
-boot-unknown-clients off;
+boot-unknown-clients on;
 ddns-update-style=ad-hoc;
 
 subnet {{ lan.subnetwork|long2ip }} netmask {{ networks__mask(lan.mask) }} {

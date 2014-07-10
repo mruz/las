@@ -40,6 +40,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 {{ ipt }} -t nat -N lasDenyNPre
 {{ ipt }} -t nat -N lasMsgNPre
 {{ ipt }} -t nat -N lasRedNPre
+{{ ipt }} -t nat -N lasAlienNPre
 
 {# Mangle table, chains for forward download, upload #}
 {{ ipt }} -t mangle -N lasDownMFor
@@ -59,12 +60,12 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 {# Nat table, chains for postrouting redirect, allow, alien #}
 {{ ipt }} -t nat -N lasRedNPos
 {{ ipt }} -t nat -N lasAllowNPos
-{{ ipt }} -t nat -N lasAlienNPos
 
 {# Apply chains #}
 {{ ipt }} -t nat -A PREROUTING -j lasDenyNPre
 {{ ipt }} -t nat -A PREROUTING -j lasMsgNPre
 {{ ipt }} -t nat -A PREROUTING -j lasRedNPre
+{{ ipt }} -t nat -A PREROUTING -j lasAlienNPre
 
 {{ ipt }} -t mangle -A FORWARD -i {{ wan.interface }} -o {{ lan.interface }} -j lasDownMFor
 {{ ipt }} -t mangle -A FORWARD -i {{ lan.interface }} -o {{ wan.interface }} -j lasUpMFor
@@ -72,7 +73,6 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 
 {{ ipt }} -t nat -A POSTROUTING -j lasRedNPos
 {{ ipt }} -t nat -A POSTROUTING -j lasAllowNPos
-{{ ipt }} -t nat -A POSTROUTING -j lasAlienNPos
 
 {# Download tariffs #}
 {{ tc }} qdisc add dev {{ lan.interface }} root handle 1:0 htb
@@ -136,7 +136,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 {{ ipt }} -A FORWARD -j LOG --log-prefix "DROP_FORWARD " --log-tcp-options --log-ip-options --log-tcp-sequence
 
 {# Allow to Internet #}
-{{ ipt }} -t nat -A lasAllowNPos -m mark --mark ! 999 -s {{ lan.subnetwork|long2ip }}{{ lan.mask }} -o {{ wan.interface }} -j SNAT --to {{ wan.IP|long2ip }}
+{{ ipt }} -t nat -A lasAllowNPos -m mark ! --mark 999 -s {{ lan.subnetwork|long2ip }}{{ lan.mask }} -o {{ wan.interface }} -j SNAT --to {{ wan.IP|long2ip }}{{ EOL }}
 
 {# Load partial firewalls #}
 {{ partial('LAS-red') }}
