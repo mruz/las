@@ -14,7 +14,7 @@
             <tr>
                 <td><span class="glyphicon glyphicon-flash {{ firewalls__status(firewall.status, 'color') }}" title="{{ firewalls__status(firewall.status) }}"></span></td>
                 <td>{{ linkTo('admin/firewalls/details/' ~ firewall.id, firewall.name) }}</td>
-                <td>{{ linkTo('admin/firewalls/edit/' ~ firewall.id, __('Edit')) }} | {{ linkTo(['admin/firewalls/delete/' ~ firewall.id, __('Delete'), 'data-toggle':'modal', 'data-target':"#modal", 'data-remote': url.get('admin/modal')]) }}</td>
+                <td>{{ linkTo('admin/firewalls/edit/' ~ firewall.id, __('Edit')) }} | {{ linkTo('admin/firewalls/compile/' ~ firewall.id, __('Compile')) }} | {{ linkTo(['admin/firewalls/reload/' ~ firewall.id, __('Reload'), 'data-toggle':'modal', 'data-target':"#modal", 'data-remote': url.get('admin/modal/reload')]) }} | {{ linkTo(['admin/firewalls/delete/' ~ firewall.id, __('Delete'), 'data-toggle':'modal', 'data-target':"#modal", 'data-remote': url.get('admin/modal')]) }}</td>
             </tr>
         {% endfor %}
     </tbody>
