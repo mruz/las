@@ -92,7 +92,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
     
     {# Qos for download #}
     {% if settings.enableQos %}
-        {% for priority, qos in services__priority(null) %}
+        {% for priority, qos in services__priority('qos') %}
             {{ tc }} class add dev {{ lan.interface }} parent 1:1{{ tariff.priority }} classid 1:1{{ tariff.priority }}{{ priority }} htb rate {{ qos['rate']/100*tariff.downloadRate ~ settings.bitRate }} ceil {{ qos['ceil']/100*tariff.downloadCeil ~ settings.bitRate }} prio {{ tariff.priority }}{{ priority }}{{ EOL }}
             {{ tc }} filter add dev {{ lan.interface }} parent 1:0 prio {{ tariff.priority }}{{ priority }} protocol ip handle 1{{ tariff.priority }}{{ priority }} fw flowid 1:1{{ tariff.priority }}{{ priority }}{{ EOL }}
             {{ tc }} qdisc add dev {{ lan.interface }} parent 1:1{{ tariff.priority }}{{ priority }} handle 1{{ tariff.priority }}{{ priority }}: sfq perturb 10
@@ -106,7 +106,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
     
     {# Qos for upload #}
     {% if settings.enableQos %}
-        {% for priority, qos in services__priority(null) %}
+        {% for priority, qos in services__priority('qos') %}
             {{ tc }} class add dev {{ wan.interface }} parent 1:1{{ tariff.priority }} classid 1:1{{ tariff.priority }}{{ priority }} htb rate {{ qos['rate']/100*tariff.uploadRate ~ settings.bitRate }} ceil {{ qos['ceil']/100*tariff.uploadCeil ~ settings.bitRate }} prio {{ tariff.priority }}{{ priority }}{{ EOL }}
             {{ tc }} filter add dev {{ wan.interface }} parent 1:0 prio {{ tariff.priority }}{{ priority }} protocol ip handle 1{{ tariff.priority }}{{ priority }} fw flowid 1:1{{ tariff.priority }}{{ priority }}{{ EOL }}
             {{ tc }} qdisc add dev {{ wan.interface }} parent 1:1{{ tariff.priority }}{{ priority }} handle 1{{ tariff.priority }}{{ priority }}: sfq perturb 10

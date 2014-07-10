@@ -104,6 +104,7 @@ return array(
     "English" => "Angielski",
     "Error" => "Błąd",
     "Error :code" => "Błąd :code",
+    "Examples" => "Przykłady",
     "Fill the fields" => "Uzupełnij pola",
     "Firewalls" => "Firewalle",
     "First" => "Pierwsza",
@@ -198,5 +199,6 @@ return array(
     "Upload rate" => "Zapewnione wysyłanie",
     "Username" => "Nazwa użytkownika",
     "Warning" => "Ostrzeżenie",
+    "You can use the default firewalls" => "Możesz wykożystać domyślne zapory",
     "You don't have access to this page." => "Nie masz dostępu do tej strony.",
 );

@@ -50,6 +50,8 @@ class FirewallsController extends IndexController
      */
     public function addAction()
     {
+        $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("You can use the default firewalls") . ': ' . $this->tag->linkTo(['doc/examples/default', __('Examples'), 'target' => '_blank']));
+
         // Set title, pick view and send variables
         $this->tag->setTitle(__('Firewalls') . ' / ' . __('Add'));
         $this->view->pick('firewalls/write');

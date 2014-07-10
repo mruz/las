@@ -1,9 +1,11 @@
 {# Home View | las | 1.0 #}
-{% if balance is defined and balance < tariff.amount %}
-    <div class="text-center">
-        <h4>{{ __('No access') }}</h4><hr />
-        <p>{{ image('img/accessdenied.gif', 'alt': __('No access')) }}</p><br />
-    </div>
+{% if client is defined %}
+    {% if client.status == clients__DISCONNECTED%}
+        <div class="text-center">
+            <h4>{{ __('No access') }}</h4><hr />
+            <p>{{ image('img/accessdenied.gif', 'alt': __('No access')) }}</p><br />
+        </div>
+    {% endif %}
 {% endif %}
 <div class="panel panel-default">
     <div class="panel-heading">{{ __('Info') }}</div>

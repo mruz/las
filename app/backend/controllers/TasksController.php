@@ -50,7 +50,7 @@ class TasksController extends IndexController
      */
     public function addAction()
     {
-        $firewalls = Firewalls::find(['status=:status:', 'bind' => ['status' => Firewalls::COMPILED]]);
+        $firewalls = Firewalls::find();
 
         if (!count($firewalls)) {
             $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("Please add the firewall first") . ': ' . $this->tag->linkTo('admin/firewalls/add', __('Add')));
@@ -148,7 +148,7 @@ class TasksController extends IndexController
         // Get id from url params and check if record exist
         $params = $this->router->getParams();
         if (isset($params[0]) && $task = Tasks::findFirst($params[0])) {
-            $firewalls = Firewalls::find(['status=:status:', 'bind' => ['status' => Firewalls::COMPILED]]);
+            $firewalls = Firewalls::find();
 
             if (!count($firewalls)) {
                 $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("Please add the firewall first") . ': ' . $this->tag->linkTo('admin/firewalls/add', __('Add')));

@@ -82,7 +82,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="footer-collapse">
                     <ul class="nav navbar-nav pull-left pull-none">
-                        <li class="disabled"><span class="navbar-text">Phalcon {{ version() }}</span></li>
+                        <li class="disabled"><span class="navbar-text">Las {{ las__version() }}</span></li>
                         <li>{{ linkTo('contact', __('Contact')) }}</li>
                         <li>{{ linkTo('user/signup', __('Sign up')) }}</li>
                     </ul>

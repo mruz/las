@@ -160,12 +160,13 @@ class Services extends \Phalcon\Mvc\Model
             Services::LOW => ['text' => __('Low'), 'name' => 'low'],
             Services::LOWEST => ['text' => __('Lowest'), 'name' => 'lowest'],
         ];
-        $settings = Arr::from_model(Settings::find('category="qos"'), 'name', 'value');
-        foreach ($priority as $prio => $values) {
-            $priority[$prio]['rate'] = isset($settings[$values['name'] . 'Rate']) ? $settings[$values['name'] . 'Rate'] : null;
-            $priority[$prio]['ceil'] = isset($settings[$values['name'] . 'Ceil']) ? $settings[$values['name'] . 'Ceil'] : null;
-        }
-        if ($key === null) {
+        if ($key === 'qos') {
+            unset($priority[Services::DISABLED]);
+            $settings = Arr::from_model(Settings::find('category="qos"'), 'name', 'value');
+            foreach ($priority as $prio => $values) {
+                $priority[$prio]['rate'] = isset($settings[$values['name'] . 'Rate']) ? $settings[$values['name'] . 'Rate'] : null;
+                $priority[$prio]['ceil'] = isset($settings[$values['name'] . 'Ceil']) ? $settings[$values['name'] . 'Ceil'] : null;
+            }
             return $priority;
         } elseif ($key !== false) {
             if ($key !== true) {

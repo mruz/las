@@ -38,5 +38,6 @@
     {% endfor %}
 {% endfor %}
 
+{# Temporary allow fot the traffic INPUT / OUTPUT #}
 {{ ipt }} -A lasFIn -m state --state NEW -j ACCEPT
 {{ ipt }} -A lasFOut -m state --state NEW -j ACCEPT

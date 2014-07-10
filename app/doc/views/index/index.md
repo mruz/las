@@ -37,6 +37,8 @@
 - [Devices](doc/admin#devices)
 
 6. [Examples](doc/examples)
+- [Default firewalls](doc/examples#default)
+- [Loop over each item in a sequence](doc/examples#loop)
 
 7. [Update](doc/update)
 - [Working with git](doc/update#git)
