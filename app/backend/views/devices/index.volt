@@ -5,7 +5,7 @@
     <thead>
         <tr>
             <th title="{{ __('Status') }}">{{ tool__sortLink('status') }}</th>
-            <th>{{ tool__sortLink('name', 'alphabet') }} {{ __('Name')}}</th>
+            <th>{{ tool__sortLink('name', 'alphabet') }} {{ __('Name')}} {{ tool__sortLink('lastActive') }}</th>
             <th class="hidden-xs">{{ tool__sortLink('client_id') }} {{ __('Client') }}</th>
             <th class="hidden-xs">{{ tool__sortLink('type') }} {{ __('Type') }}</th>
             <th>{{ tool__sortLink('IP') }} {{ __('IP') }}</th>
@@ -16,7 +16,7 @@
         {% for device in pagination.items %}
             <tr>
                 <td><span class="glyphicon glyphicon-flash {{ devices__status(device.status, 'color') }}" title="{{ devices__status(device.status) }}"></span></td>
-                <td>{{ linkTo('admin/devices/details/' ~ device.id, device.name) }}</td>
+                <td>{{ linkTo('admin/devices/details/' ~ device.id, device.name) }}{{ device.lastActive ? '<br />' ~ date('Y-m-d H:i:s', device.lastActive : '') }}</td>
                 {% set client = device.getClient() %}
                 <td class="hidden-xs">{{ client ? linkTo('admin/clients/details/' ~ client.id, client.fullName) : __('None') }}</td>
                 <td class="hidden-xs">{{ devices__type(device.type) }}</td>

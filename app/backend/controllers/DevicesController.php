@@ -28,7 +28,7 @@ class DevicesController extends IndexController
         $this->tag->setTitle(__('Devices'));
         // Available sort to choose
         $this->filter->add('in_array', function($value) {
-            return in_array($value, ['client_id', 'client_id DESC', 'IP', 'IP DESC', 'name', 'name DESC', 'status', 'status DESC', 'type', 'type DESC']) ? $value : null;
+            return in_array($value, ['client_id', 'client_id DESC', 'IP', 'IP DESC', 'lastActive', 'lastActive DESC', 'name', 'name DESC', 'status', 'status DESC', 'type', 'type DESC']) ? $value : null;
         });
 
         // Check if limit to client's devices
