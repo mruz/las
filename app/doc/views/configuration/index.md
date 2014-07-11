@@ -35,11 +35,11 @@ Paste the following config to `/etc/nginx/vhost.d/las.conf` vhost config file:
 server {
     listen      81;
     server_name _;
-    set         $root_path '/var/www/$host/public';
+    set         $root_path '/srv/www/las/public';
     root        $root_path;
 
-    access_log  /var/log/nginx/$host-access.log;
-    error_log   /var/log/nginx/$host-error.log error;
+    access_log  /var/log/nginx/las-access.log;
+    error_log   /var/log/nginx/las-error.log;
 
     index index.php index.html index.htm;
 
@@ -155,18 +155,12 @@ mysql> GRANT ALL ON las.* TO las@localhost IDENTIFIED BY '[your_password]';
 mysql> flush privileges;
 mysql> use las;
 mysql> source las.sql;
-```
-
-Enable MySQL service
-```bash
-# enable mysql
-systemctl enable mysql.service
-
+mysql> quit;
 ```
 ***
 
 #### Network configuration {#network}
-Configure lan, wan interfaces:
+Configure interfaces: lan static IP (eg 192.169.100.1), wan from DHCP:
 ```
 # configure with YaST/Network Devices/Network Settings  
 yast
@@ -185,9 +179,6 @@ ip addr add 192.168.100.1/24 broadcast 192.168.100.255 dev enp3s0
 
 # enable network interface
 ip link set enp3s0 up
-
-# add default gateway
-ip route add default via 192.168.100.1
 ```
 
 Enable the DHCP server
@@ -200,6 +191,8 @@ sed -i 's/DHCPD_INTERFACE=""/DHCPD_INTERFACE="enp3s0"/' /etc/sysconfig/dhcpd
 
 # start dhcp server
 systemctl start dhcpd.service
+
+# the `/etc/dhcpd.conf` config file will be created later by las
 ```
 ***
 
