@@ -1,5 +1,6 @@
+{# DHCP #}
+{# update the `/etc/dhcpd.conf` config file #}
 echo "
-{# /etc/dhcpd.conf #}
 authoritative;
 boot-unknown-clients on;
 ddns-update-style=ad-hoc;
@@ -24,3 +25,6 @@ group {
     {% endfor %}
 }
 "> /etc/dhcpd.conf
+
+{# restart DHCP server #}
+/etc/init.d/dhcpd restart
