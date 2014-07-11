@@ -125,7 +125,7 @@ class CronTask extends MainTask
         $this->dispatcher->forward([
             'task' => 'firewall',
             'action' => 'display',
-            'params' => $this->router->getParams(),
+            'params' => $this->dispatcher->getParams(),
         ]);
     }
 

@@ -37,7 +37,7 @@ class FirewallTask extends MainTask
      */
     public function compileAction()
     {
-        $params = $this->router->getParams();
+        $params = $this->dispatcher->getParams();
         if (isset($params[0]) && $firewall = Firewalls::findFirst(intval($params[0]) ? $params[0] : ['name=:name:', 'bind' => ['name' => $params[0]]])) {
             Las::compile($firewall->content, $firewall->name);
         }
@@ -51,7 +51,7 @@ class FirewallTask extends MainTask
      */
     public function displayAction()
     {
-        $params = $this->router->getParams();
+        $params = $this->dispatcher->getParams();
         if (isset($params[0]) && $firewall = Firewalls::findFirst(intval($params[0]) ? $params[0] : ['name=:name:', 'bind' => ['name' => $params[0]]])) {
             echo Las::display($firewall->name);
         }

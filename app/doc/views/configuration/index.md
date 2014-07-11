@@ -238,6 +238,17 @@ php index.php prepare chmod
 
 After this step you should be able to enter your system without any problems. Run some web browser and just write an URL `localhost:81/admin` for your Las installation. If there's no user account (first run), you'll be prompted with form to add username and some personal data. When you enter correct admin personal details Las will move you to login page, where you can use newly created account.
 
+##### Cron tasks:
+```bash
+# create las crontab file
+touch /etc/cron.d/las
+
+# edit and paste content below
+@reboot root /usr/bin/php /srv/www/las/private/index.php cron reboot | /usr/bin/sh
+* * * * * root /usr/bin/php /srv/www/las/private/index.php cron | /usr/bin/sh
+```
+> The crontab file must end with a blank line (that is, the last character of the final line in the file must be a newline character).
+
 |                                   |                           |
 | :-------------------------------- | ------------------------: |
 | 3. [Installation](./installation) | 5. [Admin panel](./admin) |
