@@ -16,7 +16,7 @@
         {% for device in pagination.items %}
             <tr>
                 <td><span class="glyphicon glyphicon-flash {{ devices__status(device.status, 'color') }}" title="{{ devices__status(device.status) }}"></span></td>
-                <td>{{ linkTo('admin/devices/details/' ~ device.id, device.name) }}{{ device.lastActive ? '<br />' ~ date('Y-m-d H:i:s', device.lastActive : '') }}</td>
+                <td>{{ linkTo('admin/devices/details/' ~ device.id, device.name) }}{{ device.lastActive ? '<br />' ~ date('Y-m-d H:i:s', device.lastActive) : '' }}</td>
                 {% set client = device.getClient() %}
                 <td class="hidden-xs">{{ client ? linkTo('admin/clients/details/' ~ client.id, client.fullName) : __('None') }}</td>
                 <td class="hidden-xs">{{ devices__type(device.type) }}</td>
