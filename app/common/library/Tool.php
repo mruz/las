@@ -248,10 +248,10 @@ class Tool
 
         if ($request->getQuery('order') == $type) {
             $query ['order'] = $type . ' DESC';
-            $ico = '<span class="glyphicon glyphicon-sort-by-' . $ico . '-alt" title"' . __(Tool::label($type)) . ' DESC"></span>';
+            $ico = '<span class="glyphicon glyphicon-sort-by-' . $ico . '-alt" title="' . __(Tool::label($type)) . ' DESC"></span>';
         } else {
             $query ['order'] = $type;
-            $ico = '<span class="glyphicon glyphicon-sort-by-' . $ico . '" title"' . __(Tool::label($type)) . ' ASC"></span>';
+            $ico = '<span class="glyphicon glyphicon-sort-by-' . $ico . '" title="' . __(Tool::label($type)) . ' ASC"></span>';
         }
 
         return \Phalcon\DI::getDefault()->getShared('tag')->linkTo([$url, 'query' => $query, $ico]);
