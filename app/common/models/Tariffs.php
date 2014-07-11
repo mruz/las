@@ -166,7 +166,7 @@ class Tariffs extends \Phalcon\Mvc\Model
             $this->downloadCeil = $this->request->getPost('downloadCeil', 'float');
             $this->uploadRate = $this->request->getPost('uploadRate', 'float');
             $this->uploadCeil = $this->request->getPost('uploadCeil', 'float');
-            $this->limit = $this->request->getPost('limit', 'int');
+            $this->limit = $this->request->getPost('limit', 'int', null, ture);
             $this->description = $this->request->getPost('description');
             $this->status = $this->request->getPost('status', 'int');
             $this->date = date('Y-m-d H:i:s');
