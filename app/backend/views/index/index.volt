@@ -28,6 +28,12 @@
                 </div>
                 {% endif %}
                 <div class="form-group">
+                    <label class="col-sm-4 control-label">{{ __('Web server') }}:</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">{{ request.getServer('SERVER_SOFTWARE') }}</p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-4 control-label">{{ __('PHP') }}:</label>
                     <div class="col-sm-8">
                         <p class="form-control-static">{{ phpversion() }}</p>
