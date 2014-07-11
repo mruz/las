@@ -1,30 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 4.1.8
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jul 10, 2014 at 05:07 PM
--- Server version: 5.5.33-MariaDB
--- PHP Version: 5.4.20
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
---
--- Database: `las`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `clients`
---
 
 CREATE TABLE IF NOT EXISTS `clients` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -36,12 +17,6 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `date` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `devices`
---
 
 CREATE TABLE IF NOT EXISTS `devices` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -58,12 +33,6 @@ CREATE TABLE IF NOT EXISTS `devices` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `firewalls`
---
-
 CREATE TABLE IF NOT EXISTS `firewalls` (
   `id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
@@ -74,10 +43,6 @@ CREATE TABLE IF NOT EXISTS `firewalls` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
---
--- Dumping data for table `firewalls`
---
-
 INSERT INTO `firewalls` (`id`, `name`, `content`, `description`, `status`, `date`) VALUES
 (1, 'DHCP', '{# DHCP #}\r\n{# Create your own config or copy and paste the default /doc/examples/default#DHCP #}', '', 3, '2014-07-10 16:48:46'),
 (2, 'LAS-main', '{# LAS-main #}\r\n{# Create your own firewall or copy and paste the default /doc/examples/default#LAS-main #}', '', 3, '2014-07-10 16:50:32'),
@@ -86,12 +51,6 @@ INSERT INTO `firewalls` (`id`, `name`, `content`, `description`, `status`, `date
 (5, 'LAS-msg', '{# LAS-msg #}\r\n{# Create your own firewall or copy and paste the default /doc/examples/default#LAS-msg #}', '', 3, '2014-07-10 16:52:46'),
 (6, 'LAS-red', '{# LAS-red #}\r\n{# Create your own firewall or copy and paste the default /doc/examples/default#LAS-red #}', '', 3, '2014-07-10 16:53:09'),
 (7, 'LAS-alien', '{# LAS-alien #}\r\n{# Create your own firewall or copy and paste the default /doc/examples/default#LAS-alien #}', '', 3, '2014-07-10 16:53:32');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
 
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -102,12 +61,6 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `networks`
---
 
 CREATE TABLE IF NOT EXISTS `networks` (
   `id` smallint(2) unsigned NOT NULL AUTO_INCREMENT,
@@ -128,12 +81,6 @@ CREATE TABLE IF NOT EXISTS `networks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `payments`
---
-
 CREATE TABLE IF NOT EXISTS `payments` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `client_id` int(11) unsigned NOT NULL,
@@ -143,12 +90,6 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `redirects`
---
 
 CREATE TABLE IF NOT EXISTS `redirects` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -165,12 +106,6 @@ CREATE TABLE IF NOT EXISTS `redirects` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
@@ -179,19 +114,9 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `uniq_name` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Dumping data for table `roles`
---
-
 INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 (1, 'login', 'Login privileges, granted after account confirmation'),
 (2, 'admin', 'Administrative user, has access to everything.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles_users`
---
 
 CREATE TABLE IF NOT EXISTS `roles_users` (
   `user_id` int(10) unsigned NOT NULL,
@@ -199,12 +124,6 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
   PRIMARY KEY (`user_id`,`role_id`),
   KEY `fk_role_id` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `services`
---
 
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -229,12 +148,6 @@ CREATE TABLE IF NOT EXISTS `services` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `settings`
---
-
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
@@ -245,10 +158,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `status` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
-
---
--- Dumping data for table `settings`
---
 
 INSERT INTO `settings` (`id`, `name`, `type`, `options`, `value`, `category`, `status`) VALUES
 (1, 'bitRate', 5, '{"kbit":"kb/s","mbit":"Mb/s"}', 'mbit', 'general', 1),
@@ -272,12 +181,6 @@ INSERT INTO `settings` (`id`, `name`, `type`, `options`, `value`, `category`, `s
 (29, 'debugCmd', 3, NULL, '0', 'general', 1),
 (30, 'rootPassword', 2, NULL, 'OBXmZ4oTaO+/ohtZyDDgi072UOh+buq0pZgc9wnWdtA8rxBENYzLe6KcuWgQ+xsv2FuKuQuo6aUlrqnx+M0DyQ==', 'general', 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tariffs`
---
-
 CREATE TABLE IF NOT EXISTS `tariffs` (
   `id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
@@ -288,17 +191,11 @@ CREATE TABLE IF NOT EXISTS `tariffs` (
   `uploadCeil` float unsigned NOT NULL DEFAULT '0',
   `downloadRate` float unsigned NOT NULL DEFAULT '0',
   `downloadCeil` float unsigned NOT NULL DEFAULT '0',
-  `limit` int(10) unsigned NOT NULL DEFAULT '0',
+  `limit` int(10) unsigned DEFAULT NULL,
   `status` smallint(1) NOT NULL DEFAULT '0',
   `date` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tasks`
---
 
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -313,10 +210,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
---
--- Dumping data for table `tasks`
---
-
 INSERT INTO `tasks` (`id`, `name`, `when`, `type`, `firewall_id`, `next`, `description`, `status`, `date`) VALUES
 (1, 'Main', '@reboot', 1, 2, 0, '', 1, '2014-07-10 16:58:46'),
 (2, 'Payment', '0 6 1 * *', 3, 0, 0, '', 1, '2014-06-28 14:22:13'),
@@ -325,12 +218,6 @@ INSERT INTO `tasks` (`id`, `name`, `when`, `type`, `firewall_id`, `next`, `descr
 (5, 'Deny', '*/5 * * * *', 1, 3, 0, '', 1, '2014-06-28 14:26:51'),
 (6, 'Msg', '*/15 * * * *', 1, 5, 0, '', 1, '2014-07-10 16:59:03'),
 (7, 'Config', '@reboot', 1, 1, 0, '', 1, '2014-07-10 16:59:08');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -343,12 +230,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `uniq_username` (`username`),
   UNIQUE KEY `uniq_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_tokens`
---
 
 CREATE TABLE IF NOT EXISTS `user_tokens` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -363,20 +244,11 @@ CREATE TABLE IF NOT EXISTS `user_tokens` (
   KEY `expires` (`expires`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Constraints for dumped tables
---
 
---
--- Constraints for table `roles_users`
---
 ALTER TABLE `roles_users`
   ADD CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
---
--- Constraints for table `user_tokens`
---
 ALTER TABLE `user_tokens`
   ADD CONSTRAINT `user_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
