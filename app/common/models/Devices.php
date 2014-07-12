@@ -54,6 +54,31 @@ class Devices extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Get device's lastActive
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param mixed $time timestamp
+     * @param string $type type of data
+     * @return mixed
+     */
+    public static function lastActive($time = null, $type = 'time')
+    {
+        switch ($time) {
+            case null:
+                return $type == 'time' ? __('None') : 'text-danger';
+                break;
+            default:
+                if (time() - $time < 900) {
+                    return $type == 'time' ? date('Y-m-d H:i:s', $time) : 'text-success';
+                } else {
+                    return $type == 'time' ? date('Y-m-d H:i:s', $time) : 'text-muted';
+                }
+        }
+    }
+
+    /**
      * Get device's status(es)
      *
      * @package     las
