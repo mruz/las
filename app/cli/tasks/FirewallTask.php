@@ -40,6 +40,8 @@ class FirewallTask extends MainTask
         $params = $this->dispatcher->getParams();
         if (isset($params[0]) && $firewall = Firewalls::findFirst(intval($params[0]) ? $params[0] : ['name=:name:', 'bind' => ['name' => $params[0]]])) {
             Las::compile($firewall->content, $firewall->name);
+            $firewall->status = Firewalls::COMPILED;
+            $firewall->update();
         }
     }
 
