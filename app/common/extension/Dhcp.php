@@ -57,6 +57,10 @@ class Dhcp extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
 
                 if (empty($message)) {
                     $message = $validation->getDefaultMessage("Dns");
+                    if (empty($message)) {
+                        $message = 'Field :field is not valid';
+                        $validation->setDefaultMessages(['Dns' => $message]);
+                    }
                 }
 
                 $validation->appendMessage(new \Phalcon\Validation\Message(strtr($message, $replacePairs), $field, "Dns"));

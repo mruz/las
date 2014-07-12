@@ -52,6 +52,7 @@ class Cidr extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
                 $message = $validation->getDefaultMessage("Cidr");
                 if (empty($message)) {
                     $message = 'Field :field must match to the subnetwork';
+                    $validation->setDefaultMessages(['Cidr' => $message]);
                 }
             }
 

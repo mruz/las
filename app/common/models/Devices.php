@@ -185,7 +185,7 @@ class Devices extends \Phalcon\Mvc\Model
         ]));
         $validation->add('IP', new Extension\Uniqueness([
             'model' => __CLASS__,
-            'except' => $this->IP
+            'except' => isset($this->IP) ? $this->IP : null
         ]));
         $network = Networks::findFirst($this->request->getPost('network', 'int'));
         $validation->add('IP', new Extension\Cidr([
@@ -197,7 +197,7 @@ class Devices extends \Phalcon\Mvc\Model
         ]));
         $validation->add('MAC', new Extension\Uniqueness([
             'model' => __CLASS__,
-            'except' => $this->MAC
+            'except' => isset($this->MAC) ? $this->MAC : null
         ]));
         $validation->add('description', new Validator\StringLength([
             'max' => 1024,

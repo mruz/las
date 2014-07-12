@@ -54,6 +54,7 @@ class Ip extends \Phalcon\Validation\Validator implements \Phalcon\Validation\Va
                 $message = $validation->getDefaultMessage("Ip");
                 if (empty($message)) {
                     $message = 'Field :field must be ip';
+                    $validation->setDefaultMessages(['Ip' => $message]);
                 }
             }
 

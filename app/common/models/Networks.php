@@ -184,10 +184,6 @@ class Networks extends \Phalcon\Mvc\Model
     public function write($method = 'create')
     {
         $validation = new Extension\Validation();
-        $validation->setDefaultMessages([
-            'Ip' => 'Field :field must be ip',
-            'Dns' => 'Field :field is not valid'
-        ]);
 
         $validation->add('name', new Validator\PresenceOf());
         $validation->add('name', new Validator\StringLength([
@@ -199,7 +195,7 @@ class Networks extends \Phalcon\Mvc\Model
         ]));
         $validation->add('interface', new Extension\Uniqueness([
             'model' => __CLASS__,
-            'except' => $this->interface
+            'except' => isset($this->interface) ? $this->interface : null
         ]));
         $validation->add('subnetwork', new Validator\PresenceOf());
         $validation->add('subnetwork', new Extension\Ip([
@@ -207,7 +203,7 @@ class Networks extends \Phalcon\Mvc\Model
         ]));
         $validation->add('subnetwork', new Extension\Uniqueness([
             'model' => __CLASS__,
-            'except' => $this->subnetwork
+            'except' => isset($this->subnetwork) ? $this->subnetwork : null
         ]));
         $validation->add('type', new Validator\PresenceOf());
         $validation->add('type', new Validator\InclusionIn([
@@ -219,7 +215,7 @@ class Networks extends \Phalcon\Mvc\Model
         ]));
         $validation->add('IP', new Extension\Uniqueness([
             'model' => __CLASS__,
-            'except' => $this->IP
+            'except' => isset($this->IP) ? $this->IP : null
         ]));
         $validation->add('gateway', new Validator\PresenceOf());
         $validation->add('gateway', new \Las\Extension\Ip([
