@@ -70,7 +70,7 @@ class Devices extends \Phalcon\Mvc\Model
                 return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-danger"></span> ' . __('None') . '</span>';
             default:
                 if (time() - $time < 900) {
-                    return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-succes" title="' . __('Online') . '"></span> ' . date('Y-m-d H:i:s', $time) . '</span>';
+                    return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-success" title="' . __('Online') . '"></span> ' . date('Y-m-d H:i:s', $time) . '</span>';
                 } else {
                     return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-muted" title="' . __('Offline') . '"></span> ' . date('Y-m-d H:i:s', $time) . '</span>';
                 }
