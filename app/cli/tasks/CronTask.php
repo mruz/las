@@ -53,7 +53,7 @@ class CronTask extends MainTask
         }
 
         // Check if there is some task to run
-        $tasks = Tasks::find('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND when!="@reboot" AND next< ' . time());
+        $tasks = Tasks::find('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND when!="@reboot" AND next< ' . time().' ORDER BY next ASC');
         foreach ($tasks as $task) {
             $task->next = \Las\Library\Crontab::parse($task->when);
             $task->status = Tasks::ACTIVE;
