@@ -63,17 +63,16 @@ class Devices extends \Phalcon\Mvc\Model
      * @param string $type type of data
      * @return mixed
      */
-    public static function lastActive($time = null, $type = 'time')
+    public static function lastActive($time = null)
     {
         switch ($time) {
             case null:
-                return $type == 'time' ? __('None') : 'text-danger';
-                break;
+                return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-danger"></span> ' . __('None') . '</span>';
             default:
                 if (time() - $time < 900) {
-                    return $type == 'time' ? date('Y-m-d H:i:s', $time) : 'text-success';
+                    return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-succes" title="' . __('Online') . '"></span> ' . date('Y-m-d H:i:s', $time) . '</span>';
                 } else {
-                    return $type == 'time' ? date('Y-m-d H:i:s', $time) : 'text-muted';
+                    return '<span class="text-muted small" title="' . __('Last active') . '"><span class="glyphicon glyphicon-flash text-muted" title="' . __('Offline') . '"></span> ' . date('Y-m-d H:i:s', $time) . '</span>';
                 }
         }
     }
