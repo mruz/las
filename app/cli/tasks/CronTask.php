@@ -27,8 +27,7 @@ class CronTask extends MainTask
     public function mainAction()
     {
         // Check if there is some firewall to compile
-        $compile = Firewalls::find('status=' . Firewalls::COMPILE);
-        foreach ($compile as $firewall) {
+        if ($firewall = Firewalls::findFirst('status=' . Firewalls::COMPILE)) {
             $firewall->status = Firewalls::COMPILED;
             $firewall->update();
 
@@ -40,8 +39,7 @@ class CronTask extends MainTask
         }
 
         // Check if there is some firewall to reload
-        $reload = Firewalls::find('status=' . Firewalls::RELOAD);
-        foreach ($reload as $firewall) {
+        if ($firewall = Firewalls::findFirst('status=' . Firewalls::RELOAD)) {
             $firewall->status = Firewalls::COMPILED;
             $firewall->update();
 
@@ -53,8 +51,7 @@ class CronTask extends MainTask
         }
 
         // Check if there is some task to run
-        $tasks = Tasks::find('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND when!="@reboot" AND next< ' . time().' ORDER BY next ASC');
-        foreach ($tasks as $task) {
+        if ($task =Tasks::findFirst('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND when!="@reboot" AND next< ' . time().' ORDER BY next ASC')) {
             $task->next = \Las\Library\Crontab::parse($task->when);
             $task->status = Tasks::ACTIVE;
             $task->update();
@@ -179,8 +176,8 @@ class CronTask extends MainTask
      */
     public function rebootAction()
     {
-        $tasks = Tasks::find('status=' . Tasks::ACTIVE . ' AND when="@reboot"');
-        foreach ($tasks as $task) {
+        // Only one ACTIVE task is running at reboot
+        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND when="@reboot"')) {
             $this->dispatcher->forward([
                 'task' => 'firewall',
                 'action' => 'display',
