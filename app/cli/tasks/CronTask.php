@@ -166,7 +166,7 @@ class CronTask extends MainTask
 
             if ($ping) {
                 $device->lastActive = time();
-                $device->save();
+                $device->update();
             }
         }
     }

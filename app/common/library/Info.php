@@ -60,7 +60,7 @@ class Info
     public static function ping($ip, $count = 2)
     {
         $received = shell_exec('ping ' . $ip . " -c " . $count . " -W 1 -i 0.2 -l 2 | grep 'received' | awk -F',' '{ print $2 }' | awk '{ print $1 }'");
-        return $received;
+        return (int)$received;
     }
 
     public static function proc($file)
