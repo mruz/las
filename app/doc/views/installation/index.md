@@ -65,7 +65,7 @@ tar zxf master.tar.gz
 mv las-master/ las
 ```
 
-or using git:
+or using `git` (preferred way):
 
 ```bash
 # install `git` if it is not installed
