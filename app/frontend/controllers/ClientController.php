@@ -2,6 +2,7 @@
 
 namespace Las\Frontend\Controllers;
 
+use Las\Models\Devices;
 use Las\Models\Clients;
 
 /**
