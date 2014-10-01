@@ -57,7 +57,7 @@ class PaymentsController extends IndexController
      */
     public function addAction()
     {
-        $clients = Clients::find(['status=:status:', 'bind' => ['status' => Clients::ACTIVE]]);
+        $clients = Clients::find();
 
         if (!count($clients)) {
             $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("Please add the client first") . ': ' . $this->tag->linkTo('admin/clients/add', __('Add')));
