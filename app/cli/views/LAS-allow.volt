@@ -5,7 +5,7 @@
 {{ ipt }} -t filter -F lasAllowFFor
 
 {# Active clients/devices #}
-{% for client in clients.filter(las__filter('status', '==', clients__ACTIVE())) %}
+{% for client in clients.filter(las__filter('status', 'in', [clients__ACTIVE(), clients__INDEBTED()] )) %}
     {% set tariff = client.getTariff() %}
     
         {% if settings.enableQos %}
