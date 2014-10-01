@@ -191,6 +191,7 @@ return array(
     "Title" => "Tytuł",
     "To activate your account, click on this link:" => "Aby aktywować konto, kliknij na ten link:",
     "To all" => "Do wszystkich",
+    "Turn on the temporary access" => "Włącz tymczasowy dostęp",
     "Type" => "Typ",
     "Unactive" => "Nieaktywny",
     "unlimited" => "nieograniczony",

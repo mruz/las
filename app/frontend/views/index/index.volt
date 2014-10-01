@@ -35,6 +35,11 @@
                     <p class="form-control-static {{ clients__status(client.status, 'color') }}">{{ balance ? balance ~ las['payments']['currency']|isset : __('None') }}</p>
                 </div>
             </div>
+            {% if client.status == clients__INDEBTED() %}
+                <div class="text-center">
+                    <p>{{ linkTo(['client/temporarily/' ~ client.id, __('Turn on the temporary access'), 'class': 'btn btn-primary']) }}</p>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 </div>
