@@ -57,7 +57,7 @@ class MessagesController extends IndexController
      */
     public function addAction()
     {
-        $clients = Clients::find(['status=:status:', 'bind' => ['status' => Clients::ACTIVE]]);
+        $clients = Clients::find(['status!=:status:', 'bind' => ['status' => Clients::UNACTIVE]]);
 
         if (!count($clients)) {
             $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("Please add the client first") . ': ' . $this->tag->linkTo('admin/clients/add', __('Add')));
@@ -154,7 +154,7 @@ class MessagesController extends IndexController
         // Get id from url params and check if record exist
         $params = $this->router->getParams();
         if (isset($params[0]) && $message = Messages::findFirst($params[0])) {
-            $clients = Clients::find(['status=:status:', 'bind' => ['status' => Clients::ACTIVE]]);
+            $clients = Clients::find(['status!=:status:', 'bind' => ['status' => Clients::UNACTIVE]]);
 
             if (!count($clients)) {
                 $this->flashSession->notice($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Notice') . '!</strong> ' . __("Please add the client first") . ': ' . $this->tag->linkTo('admin/clients/add', __('Add')));

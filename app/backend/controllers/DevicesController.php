@@ -58,7 +58,7 @@ class DevicesController extends IndexController
      */
     public function addAction()
     {
-        $clients = Clients::find(['status=:status:', 'bind' => ['status' => Clients::ACTIVE]]);
+        $clients = Clients::find(['status!=:status:', 'bind' => ['status' => Clients::UNACTIVE]]);
         $networks = Networks::find(['status=:status:', 'bind' => ['status' => Networks::ACTIVE]]);
 
         if (!count($clients)) {
@@ -162,7 +162,7 @@ class DevicesController extends IndexController
         // Get id from url params and check if record exist
         $params = $this->router->getParams();
         if (isset($params[0]) && $device = Devices::findFirst($params[0])) {
-            $clients = Clients::find(['status=:status:', 'bind' => ['status' => Clients::ACTIVE]]);
+            $clients = Clients::find(['status!=:status:', 'bind' => ['status' => Clients::UNACTIVE]]);
             $networks = Networks::find(['status=:status:', 'bind' => ['status' => Networks::ACTIVE]]);
 
             if (!count($clients)) {
