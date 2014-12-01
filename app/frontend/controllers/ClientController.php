@@ -35,7 +35,7 @@ class ClientController extends IndexController
                     $client->save();
                 }
             }
-            $this->response->redirect(NULL);
+            $this->response->redirect('tasks/tmp');
         }
     }
 }

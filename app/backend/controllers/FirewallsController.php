@@ -271,7 +271,7 @@ class FirewallsController extends IndexController
     }
 
     /**
-     * Run action - compile the firewall
+     * Reload action - run the firewall
      *
      * @package     las
      * @version     1.0
@@ -284,7 +284,7 @@ class FirewallsController extends IndexController
             $this->tag->setTitle(__('Firewalls') . ' / ' . __('Run'));
             $this->view->pick('msg');
 
-            // Compile at real time or trigger compile
+            // Reload at real time or trigger reload
             if ($this->las['general']['realTime'] && $this->las['general']['rootPassword']) {
                 try {
                     // Try to run command as root

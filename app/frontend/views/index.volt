@@ -28,6 +28,11 @@
                             <button type="submit" name="submit_signin" class="btn btn-default"><span class="glyphicon glyphicon-log-in"></span> {{ __('Sign in') }}</button>
                             {{ endForm() }}
                         {% else %}
+                            {% if auth.logged_in('admin') %}
+                                <ul class="nav navbar-nav">
+                                    <li>{{ linkTo(['admin', '<span class="glyphicon glyphicon-wrench"></span>', 'title': __('Admin panel')]) }}</li>
+                                </ul>
+                            {% endif %}
                             <ul class="nav navbar-nav pull-right pull-none">
                                 <li class="dropdown">
                                     {{ linkTo([ '#', 'class' : 'dropdown-togle', 'data-toggle' : 'dropdown', auth.get_user().username ~ '<b class="caret"></b>' ]) }}
