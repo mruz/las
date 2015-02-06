@@ -49,6 +49,7 @@
 <table class="table table-striped table-responsive">
     <thead>
         <tr>
+            <th><spanclass="hidden-xs">{{ __('Status')}}</span></th>
             <th>{{ __('Name')}}</th>
             <th class="hidden-xs">{{ __('Type') }}</th>
             <th>{{ __('IP') }}</th>
@@ -58,7 +59,8 @@
     <tbody>
     {% for device in client.getDevices(['limit': 20, 'order': 'id DESC']) %}
         <tr>
-            <td><span class="glyphicon glyphicon-flash {{ devices__status(device.status, 'color') }}" title="{{ devices__status(device.status) }}"></span> {{ linkTo('admin/devices/details/' ~ device.id, device.name) }}</td>
+            <td><span class="glyphicon glyphicon-flash {{ devices__status(device.status, 'color') }}" title="{{ devices__status(device.status) }}"></span></td>
+            <td>{{ linkTo('admin/devices/details/' ~ device.id, device.name) }}<br />{{ devices__lastActive(device.lastActive) }}</td>
             <td class="hidden-xs">{{ devices__type(device.type) }}</td>
             <td>{{ long2ip(device.IP) }}<br /><span class="text-muted small">{{ device.MAC }}</span></td>
             <td>{{ linkTo('admin/devices/edit/' ~ device.id, __('Edit')) }} | {{ linkTo(['admin/devices/delete/' ~ device.id, __('Delete'), 'data-toggle':'modal', 'data-target':"#modal", 'data-remote': url.get('admin/modal')]) }}</td>
@@ -66,7 +68,7 @@
     {% endfor %}
     </tbody>
     <tfoot>
-        <tr><td colspan="4"></td></tr>
+        <tr><td colspan="5"></td></tr>
     </tfoot>
 </table>
 {% else %}
