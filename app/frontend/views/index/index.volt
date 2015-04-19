@@ -41,7 +41,7 @@
                 </div>
             {% endif %}
             {% if las['payments']['paymentHistory'] and client.getPayments() %}
-                <table class="table table-striped table-responsive">
+                <table class="table table-striped table-responsive" style="margin-bottom: 0">
                     <thead>
                         <tr>
                             <th>{{ __('Date') }}</th>
@@ -58,9 +58,6 @@
                         </tr>
                     {% endfor %}
                     </tbody>
-                    <tfoot>
-                        <tr><td colspan="3"></td></tr>
-                    </tfoot>
                 </table>
             {% endif %}
         {% endif %}
