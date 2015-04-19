@@ -179,7 +179,8 @@ INSERT INTO `settings` (`id`, `name`, `type`, `options`, `value`, `category`, `s
 (27, 'enableQos', 3, NULL, '0', 'qos', 1),
 (28, 'realTime', 3, NULL, '0', 'general', 1),
 (29, 'debugCmd', 3, NULL, '0', 'general', 1),
-(30, 'rootPassword', 2, NULL, 'OBXmZ4oTaO+/ohtZyDDgi072UOh+buq0pZgc9wnWdtA8rxBENYzLe6KcuWgQ+xsv2FuKuQuo6aUlrqnx+M0DyQ==', 'general', 1);
+(30, 'rootPassword', 2, NULL, 'OBXmZ4oTaO+/ohtZyDDgi072UOh+buq0pZgc9wnWdtA8rxBENYzLe6KcuWgQ+xsv2FuKuQuo6aUlrqnx+M0DyQ==', 'general', 1),
+(31, 'paymentHistory', 3, NULL, '0', 'payments', 1);
 
 CREATE TABLE IF NOT EXISTS `tariffs` (
   `id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,

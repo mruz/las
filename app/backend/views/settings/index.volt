@@ -5,7 +5,7 @@
     {% set field = setting.name %}
     {% if setting.type == settings__TEXT() %}
         <div class="form-group{{ errors is defined and errors.filter(field) ? ' has-error' : (_POST[field]|isset ? ' has-success' : '') }}">
-            <label class="control-label col-lg-3" for={{ field }}>{{ __(field|capitalize) }}:</label>
+            <label class="control-label col-lg-3" for={{ field }}>{{ __(field|label) }}:</label>
             <div class="col-lg-9">
                 {{ textField([ field, 'class' : 'form-control', 'placeholder' : __(field|label) ]) }}
                 {% if errors is defined and errors.filter(field) %}
@@ -15,7 +15,7 @@
         </div>
     {% elseif setting.type == settings__PASSWORD() %}
         <div class="form-group{{ errors is defined and errors.filter(field) ? ' has-error' : (_POST[field]|isset ? ' has-success' : '') }}">
-            <label class="control-label col-lg-3" for={{ field }}>{{ __(field|capitalize) }}:</label>
+            <label class="control-label col-lg-3" for={{ field }}>{{ __(field|label) }}:</label>
             <div class="col-lg-9">
                 {{ passwordField([ field, 'class' : 'form-control', 'placeholder' : __(field|label) ]) }}
                 {% if errors is defined and errors.filter(field) %}

@@ -49,7 +49,7 @@
 <table class="table table-striped table-responsive">
     <thead>
         <tr>
-            <th><spanclass="hidden-xs">{{ __('Status')}}</span></th>
+            <th><span class="hidden-xs">{{ __('Status')}}</span></th>
             <th>{{ __('Name')}}</th>
             <th class="hidden-xs">{{ __('Type') }}</th>
             <th>{{ __('IP') }}</th>
