@@ -40,7 +40,7 @@
                     <p>{{ linkTo(['client/temporarily/' ~ client.id, __('Turn on the temporary access'), 'class': 'btn btn-primary']) }}</p>
                 </div>
             {% endif %}
-            {% if las['payments']['paymentHistory'] and client.getPayments(['limit': 40, 'order': 'id DESC']) %}
+            {% if las['payments']['paymentHistory'] and client.getPayments() %}
                 <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
@@ -50,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for payment in client.getPayments() %}
+                    {% for payment in client.getPayments(['limit': 40, 'order': 'id DESC']) %}
                         <tr>
                             <td><span class="glyphicon glyphicon-flash {{ payments__status(payment.status, 'color') }}" title="{{ payments__status(payment.status) }}"></span> <span class="small">{{ payment.date }}</span></td>
                             <td>{{ payment.amount }}{{ las['payments']['currency']|isset }}</span></td>
