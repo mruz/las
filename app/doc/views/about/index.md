@@ -21,7 +21,7 @@ Las won't replace administration skills. If you can't handle installation and co
 ***
 
 #### Authors {#authors}
-The creator of the system and main developer is [Mariusz Łączak](http://mruz.me) known as [mruz](http://github.com/mruz).
+The creator of the system and main developer is [Mariusz Łączak](https://mruz.me) known as [mruz](http://github.com/mruz).
 ***
 
 #### License {#license}
