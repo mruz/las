@@ -29,7 +29,7 @@ class Messages extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->belongsTo('client_id', __NAMESPACE__ . '\Clients', 'id', [
             'alias' => 'Client'

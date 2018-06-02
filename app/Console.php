@@ -34,6 +34,9 @@ class Console extends \Phalcon\CLI\Console
             $this->$service();
         }
 
+        // Fake request
+        $this->_di->setShared('request', new \Phalcon\Http\Request);
+
         // Register modules
         $this->registerModules(array(
             'cli' => array(

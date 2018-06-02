@@ -29,7 +29,7 @@ class Tokens extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->belongsTo('user_id', __NAMESPACE__ . '\Users', 'id', array(
             'alias' => 'User',

@@ -591,8 +591,8 @@ abstract class Arr
             foreach ($results as $object) {
                 $arr_keys = array_keys($values);
 
-                if (count($values == 1) && is_string($arr_keys[0])) {
-                    $array[$object->$key][$object->$arr_keys[0]] = $object->$values[$arr_keys[0]];
+                if (count($values) == 1 && is_string($arr_keys[0])) {
+                    $array[$object->$key][$object->{$arr_keys[0]}] = $object->{$values[$arr_keys[0]]};
                 } else {
                     foreach ($values as $val_key => $val_value) {
                         if (is_int($val_key)) {

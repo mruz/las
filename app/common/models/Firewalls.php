@@ -29,7 +29,7 @@ class Firewalls extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->request = $this->getDI()->getShared('request');
     }

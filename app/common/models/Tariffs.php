@@ -25,7 +25,7 @@ class Tariffs extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->hasMany('id', __NAMESPACE__ . '\Clients', 'tariff_id', [
             'alias' => 'Clients'

@@ -254,6 +254,7 @@ class Bootstrap extends \Phalcon\Mvc\Application
                 'error' => 'alert alert-danger',
                 'dismissable' => 'alert alert-dismissable',
             ));
+            $flash->setAutoescape(false);
             return $flash;
         });
     }

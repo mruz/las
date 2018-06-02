@@ -33,7 +33,7 @@ class Tasks extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->belongsTo('firewall_id', __NAMESPACE__ . '\Firewalls', 'id', [
             'alias' => 'Firewall'

@@ -29,7 +29,7 @@ class Clients extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->belongsTo('tariff_id', __NAMESPACE__ . '\Tariffs', 'id', [
             'alias' => 'Tariff'

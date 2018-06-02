@@ -30,7 +30,7 @@ class Redirects extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->belongsTo('device_id', __NAMESPACE__ . '\Devices', 'id', [
             'alias' => 'Device'

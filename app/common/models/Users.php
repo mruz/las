@@ -21,7 +21,7 @@ class Users extends \Phalcon\Mvc\Model
      * @package     las
      * @version     1.0
      */
-    public function initialize()
+    public function onConstruct()
     {
         $this->hasMany('id', __NAMESPACE__ . '\Tokens', 'user_id', array(
             'alias' => 'Tokens',
