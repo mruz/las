@@ -174,7 +174,7 @@ class PaymentsController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $payment->__set('clients', $clients);
+                $payment->setClients($clients);
                 $valid = $payment->write('update');
 
                 // Check if data are valid
