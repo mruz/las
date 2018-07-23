@@ -24,7 +24,7 @@ class TasksController extends IndexController
      */
     public function tmpAction()
     {
-        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND `when`="@tmp"')) {
+        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND [when]="@tmp"')) {
             $firewall = $task->getFirewall();
 
             if ($firewall) {

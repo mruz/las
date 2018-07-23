@@ -51,7 +51,7 @@ class CronTask extends MainTask
         }
 
         // Check if there is some task to run
-        if ($task =Tasks::findFirst('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND `when`!="@reboot" AND `when`!="@tmp" AND next< ' . time().' ORDER BY next ASC')) {
+        if ($task =Tasks::findFirst('status=' . Tasks::RELOAD . ' OR status=' . Tasks::ACTIVE . ' AND [when]!="@reboot" AND [when]!="@tmp" AND next< ' . time().' ORDER BY next ASC')) {
             $task->next = \Las\Library\Crontab::parse($task->when);
             $task->status = Tasks::ACTIVE;
             $task->update();
@@ -177,7 +177,7 @@ class CronTask extends MainTask
     public function rebootAction()
     {
         // Only one ACTIVE task is running at reboot
-        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND `when`="@reboot"')) {
+        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND [when]="@reboot"')) {
             $this->dispatcher->forward([
                 'task' => 'firewall',
                 'action' => 'display',
@@ -195,7 +195,7 @@ class CronTask extends MainTask
     public function tmpAction()
     {
         // Only first ACTIVE task is running at temporarily
-        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND `when`="@tmp"')) {
+        if ($task = Tasks::findFirst('status=' . Tasks::ACTIVE . ' AND [when]="@tmp"')) {
             $this->dispatcher->forward([
                 'task' => 'firewall',
                 'action' => 'display',
