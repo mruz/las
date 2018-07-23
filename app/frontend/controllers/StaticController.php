@@ -55,7 +55,7 @@ class StaticController extends IndexController
                 $email->addReplyTo($this->request->getPost('email'));
 
                 if ($email->Send() === true) {
-                    unset($_POST);
+                    $_POST = [];
                 } else {
                     \Las\Bootstrap::log($email->ErrorInfo);
                 }

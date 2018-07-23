@@ -79,7 +79,7 @@ class MessagesController extends IndexController
 
             // Check if data are valid
             if ($valid instanceof Messages || $valid === true) {
-                unset($_POST);
+                $_POST = [];
                 $this->flashSession->success($this->tag->linkTo(['#', 'class' => 'close', 'title' => __("Close"), '×']) . '<strong>' . __('Success') . '!</strong> ' . __("The data has been saved."));
             } else {
                 $this->view->setVar('errors', $valid);

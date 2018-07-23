@@ -133,7 +133,7 @@ class Users extends \Phalcon\Mvc\Model
                     $email->prepare(__('Activation'), $this->getDI()->getShared('request')->getPost('email'), 'activation', array('username' => $this->getDI()->getShared('request')->getPost('username'), 'hash' => $hash));
 
                     if ($email->Send() === true) {
-                        unset($_POST);
+                        $_POST = [];
                         return true;
                     } else {
                         \Las\Bootstrap::log($email->ErrorInfo);
