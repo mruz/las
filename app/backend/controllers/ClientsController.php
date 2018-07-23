@@ -76,7 +76,7 @@ class ClientsController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $client = new Clients();
-            $client->__set('tariffs', $tariffs);
+            $client->setTariffs($tariffs);
             $valid = $client->write();
 
             // Check if data are valid
@@ -173,7 +173,7 @@ class ClientsController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $client->__set('tariffs', $tariffs);
+                $client->setTariffs($tariffs);
                 $valid = $client->write('update');
 
                 // Check if data are valid

@@ -81,8 +81,8 @@ class DevicesController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $device = new Devices();
-            $device->__set('clients', $clients);
-            $device->__set('networks', $networks);
+            $device->setClients($clients);
+            $device->setNetworks($networks);
             $valid = $device->write();
 
             // Check if data are valid
@@ -184,8 +184,8 @@ class DevicesController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $device->__set('clients', $clients);
-                $device->__set('networks', $networks);
+                $device->setClients($clients);
+                $device->setNetworks($networks);
                 $valid = $device->write('update');
 
                 // Check if data are valid

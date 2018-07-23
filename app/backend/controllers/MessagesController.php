@@ -74,7 +74,7 @@ class MessagesController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $message = new Messages();
-            $message->__set('clients', $clients);
+            $message->setClients($clients);
             $valid = $message->add();
 
             // Check if data are valid
@@ -170,7 +170,7 @@ class MessagesController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $message->__set('clients', $clients);
+                $message->setClients($clients);
                 $valid = $message->edit();
 
                 // Check if data are valid

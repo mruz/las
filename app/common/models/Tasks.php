@@ -43,6 +43,20 @@ class Tasks extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set firew
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $firewalls
+     * @return void
+     */
+    public function setFirewalls($firewalls)
+    {
+        $this->firew = $firewalls;
+    }
+
+    /**
      * Get task's status(es)
      *
      * @package     las

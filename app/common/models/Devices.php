@@ -54,6 +54,34 @@ class Devices extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set clients
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $clients
+     * @return void
+     */
+    public function setClients($clients)
+    {
+        $this->clients = $clients;
+    }
+
+    /**
+     * Set networks
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $networks
+     * @return void
+     */
+    public function setNetworks($networks)
+    {
+        $this->networks = $networks;
+    }
+
+    /**
      * Get device's lastActive
      *
      * @package     las

@@ -40,6 +40,20 @@ class Redirects extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set devices
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $devices
+     * @return void
+     */
+    public function setDevices($devices)
+    {
+        $this->devices = $devices;
+    }
+
+    /**
      * Get redirect's status(es)
      *
      * @package     las

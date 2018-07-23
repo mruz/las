@@ -39,6 +39,20 @@ class Messages extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set clients
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $clients
+     * @return void
+     */
+    public function setClients($clients)
+    {
+        $this->clients = $clients;
+    }
+
+    /**
      * Write method - add the new message
      *
      * @package     las

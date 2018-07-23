@@ -85,8 +85,8 @@ class ServicesController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $service = new Services();
-            $service->__set('clients', $clients);
-            $service->__set('devices', $devices);
+            $service->setClients($clients);
+            $service->setDevices($devices);
             $valid = $service->write();
 
             // Check if data are valid
@@ -197,8 +197,8 @@ class ServicesController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $service->__set('clients', $clients);
-                $service->__set('devices', $devices);
+                $service->setClients($clients);
+                $service->setDevices($devices);
                 $valid = $service->write('update');
 
                 // Check if data are valid

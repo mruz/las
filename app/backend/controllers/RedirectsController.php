@@ -75,7 +75,7 @@ class RedirectsController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $redirect = new Redirects();
-            $redirect->__set('devices', $devices);
+            $redirect->setDevices($devices);
             $valid = $redirect->write();
 
             // Check if data are valid
@@ -172,7 +172,7 @@ class RedirectsController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $redirect->__set('devices', $devices);
+                $redirect->setDevices($devices);
                 $valid = $redirect->write('update');
 
                 // Check if data are valid

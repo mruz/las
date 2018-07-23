@@ -68,7 +68,7 @@ class TasksController extends IndexController
         // Check if the form has been sent
         if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
             $task = new Tasks();
-            $task->__set('firewalls', $firewalls);
+            $task->setFirewalls($firewalls);
             $valid = $task->write();
 
             // Check if data are valid
@@ -165,7 +165,7 @@ class TasksController extends IndexController
 
             // Check if the form has been sent
             if ($this->request->isPost() === true && $this->request->hasPost('submit')) {
-                $task->__set('firewalls', $firewalls);
+                $task->setFirewalls($firewalls);
                 $valid = $task->write('update');
 
                 // Check if data are valid

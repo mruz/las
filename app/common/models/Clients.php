@@ -51,6 +51,20 @@ class Clients extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set tariffs
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $tariffs
+     * @return void
+     */
+    public function setTariffs($tariffs)
+    {
+        $this->tariffs = $tariffs;
+    }
+
+    /**
      * Get client's status(es)
      *
      * @package     las

@@ -56,6 +56,34 @@ class Services extends \Phalcon\Mvc\Model
     }
 
     /**
+     * Set clients
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $clients
+     * @return void
+     */
+    public function setClients($clients)
+    {
+        $this->clients = $clients;
+    }
+
+    /**
+     * Set devices
+     *
+     * @package     las
+     * @version     1.0
+     *
+     * @param object $devices
+     * @return void
+     */
+    public function setDevices($devices)
+    {
+        $this->devices = $devices;
+    }
+
+    /**
      * Get service's chain(s)
      *
      * @package     las
