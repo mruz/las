@@ -32,9 +32,9 @@ class PaymentsController extends IndexController
 
         // Check if limit to client's payments
         if ($client = $this->request->getQuery('client', 'int', null, true)) {
-            $data = $this->db->fetchAll('SELECT *, (SELECT fullName FROM clients WHERE clients.id = payments.client_id) AS client FROM payments WHERE client_id = :client ORDER BY ' . $this->request->getQuery('order', 'in_array', 'id', true), \Phalcon\Db::FETCH_OBJ, ['client' => $client]);
+            $data = $this->db->fetchAll('SELECT *, (SELECT fullName FROM clients WHERE clients.id = payments.client_id) AS client FROM payments WHERE client_id = :client ORDER BY ' . $this->request->getQuery('order', 'in_array', 'id DESC', true), \Phalcon\Db::FETCH_OBJ, ['client' => $client]);
         } else {
-            $data = $this->db->fetchAll('SELECT *, (SELECT fullName FROM clients WHERE clients.id = payments.client_id) AS client FROM payments ORDER BY ' . $this->request->getQuery('order', 'in_array', 'id', true), \Phalcon\Db::FETCH_OBJ);
+            $data = $this->db->fetchAll('SELECT *, (SELECT fullName FROM clients WHERE clients.id = payments.client_id) AS client FROM payments ORDER BY ' . $this->request->getQuery('order', 'in_array', 'id DESC', true), \Phalcon\Db::FETCH_OBJ);
         }
 
         // Get payments, client and prepare pagination

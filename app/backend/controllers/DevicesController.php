@@ -33,9 +33,9 @@ class DevicesController extends IndexController
 
         // Check if limit to client's devices
         if ($client = $this->request->getQuery('client', 'int', null, true)) {
-            $data = Devices::find(['client_id = :client:', 'order' => $this->request->getQuery('order', 'in_array', 'id', true), 'bind' => ['client' => $client]]);
+            $data = Devices::find(['client_id = :client:', 'order' => $this->request->getQuery('order', 'in_array', 'IP DESC', true), 'bind' => ['client' => $client]]);
         } else {
-            $data = Devices::find(['order' => $this->request->getQuery('order', 'in_array', 'id', true)]);
+            $data = Devices::find(['order' => $this->request->getQuery('order', 'in_array', 'IP DESC', true)]);
         }
 
         // Get devices and prepare pagination

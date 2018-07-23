@@ -32,9 +32,9 @@ class MessagesController extends IndexController
 
         // Check if limit to client's messages
         if ($client = $this->request->getQuery('client', 'int', null, true)) {
-            $data = Messages::find(['client_id = :client:', 'order' => $this->request->getQuery('order', 'in_array', 'id', true), 'bind' => ['client' => $client]]);
+            $data = Messages::find(['client_id = :client:', 'order' => $this->request->getQuery('order', 'in_array', 'id DESC', true), 'bind' => ['client' => $client]]);
         } else {
-            $data = Messages::find(['order' => $this->request->getQuery('order', 'in_array', 'id', true)]);
+            $data = Messages::find(['order' => $this->request->getQuery('order', 'in_array', 'id DESC', true)]);
         }
 
         // Get messages and prepare pagination
