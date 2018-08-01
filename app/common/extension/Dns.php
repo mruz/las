@@ -27,7 +27,7 @@ class Dns extends \Phalcon\Validation\Validator implements \Phalcon\Validation\V
     {
         $value = $validation->getValue($field);
 
-        if ($this->isSetOption("allowEmpty") && empty($value)) {
+        if ($this->hasOption("allowEmpty") && empty($value)) {
             return true;
         }
 

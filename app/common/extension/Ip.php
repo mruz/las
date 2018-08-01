@@ -28,11 +28,11 @@ class Ip extends \Phalcon\Validation\Validator implements \Phalcon\Validation\Va
         $value = $validation->getValue($field);
 
 
-        if ($this->isSetOption("value")) {
+        if ($this->hasOption("value")) {
             $value = $this->getOption("value");
         }
 
-        if ($this->isSetOption("allowEmpty") && empty($value)) {
+        if ($this->hasOption("allowEmpty") && empty($value)) {
             return true;
         }
 

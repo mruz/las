@@ -51,7 +51,7 @@ class File extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
             return false;
         }
 
-        if ($this->isSetOption("allowEmpty") && (empty($value) || isset($value["error"]) && $value["error"] === UPLOAD_ERR_NO_FILE)) {
+        if ($this->hasOption("allowEmpty") && (empty($value) || isset($value["error"]) && $value["error"] === UPLOAD_ERR_NO_FILE)) {
             return true;
         }
 
@@ -79,7 +79,7 @@ class File extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
             return false;
         }
 
-        if ($this->isSetOption("maxSize")) {
+        if ($this->hasOption("maxSize")) {
             $byteUnits = array("B" => 0, "K" => 10, "M" => 20, "G" => 30, "T" => 40, "KB" => 10, "MB" => 20, "GB" => 30, "TB" => 40);
             $maxSize = $this->getOption("maxSize");
             $matches = NULL;
@@ -104,7 +104,7 @@ class File extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
             }
         }
 
-        if ($this->isSetOption("allowedTypes")) {
+        if ($this->hasOption("allowedTypes")) {
             $types = $this->getOption("allowedTypes");
 
             if (!is_array($types)) {
@@ -132,10 +132,10 @@ class File extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
             }
         }
 
-        if ($this->isSetOption("minResolution") || $this->isSetOption("maxResolution")) {
+        if ($this->hasOption("minResolution") || $this->hasOption("maxResolution")) {
             list($width, $height) = getimagesize($value["tmp_name"]);
 
-            if ($this->isSetOption("minResolution")) {
+            if ($this->hasOption("minResolution")) {
                 $minResolution = explode("x", $this->getOption("minResolution"));
                 $minWidth = $minResolution[0];
                 $minHeight = $minResolution[1];
@@ -156,7 +156,7 @@ class File extends \Phalcon\Validation\Validator implements \Phalcon\Validation\
                 return false;
             }
 
-            if ($this->isSetOption("maxResolution")) {
+            if ($this->hasOption("maxResolution")) {
                 $maxResolution = explode("x", $this->getOption("maxResolution"));
                 $maxWidth = $maxResolution[0];
                 $maxHeight = $maxResolution[1];

@@ -27,7 +27,7 @@ class Together extends \Phalcon\Validation\Validator implements \Phalcon\Validat
     {
         $value = $validation->getValue($field);
 
-        if ($this->isSetOption("allowEmpty") && empty($value)) {
+        if ($this->hasOption("allowEmpty") && empty($value)) {
             return true;
         }
 
