@@ -50,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for payment in client.getPayments(['limit': 40, 'order': 'id DESC']) %}
+                    {% for payment in client.getPayments(['limit': 24, 'order': 'id DESC']) %}
                         <tr>
                             <td><span class="glyphicon glyphicon-flash {{ payments__status(payment.status, 'color') }}" title="{{ payments__status(payment.status) }}"></span> <span class="small">{{ payment.date }}</span></td>
                             <td>{{ payment.amount }}{{ las['payments']['currency']|isset }}</span></td>

@@ -191,6 +191,10 @@ class Devices extends \Phalcon\Mvc\Model
         $validation->add('name', new Validator\Regex([
             'pattern' => '/([A-Z][A-Z0-9_-]{2,})/'
         ]));
+        $validation->add('name', new Extension\Uniqueness([
+            'model' => __CLASS__,
+            'except' => isset($this->name) ? $this->name : null
+        ]));
         $validation->add('network', new Validator\PresenceOf());
         $validation->add('network', new Validator\InclusionIn([
             'domain' => Arr::from_model($this->networks, null, 'id'),
